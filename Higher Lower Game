@@ -1,62 +1,25 @@
 # The below code does not reflect original work, rather the result of learning via the course "100 Days of Code: The Complete Python Pro Bootcamp"
 
 
-import random
-from game_date import data
+logo = r"""
+    __  ___       __             
+   / / / (_)___ _/ /_  ___  _____
+  / /_/ / / __ `/ __ \/ _ \/ ___/
+ / __  / / /_/ / / / /  __/ /    
+/_/ ///_/\__, /_/ /_/\___/_/     
+   / /  /____/_      _____  _____
+  / /   / __ \ | /| / / _ \/ ___/
+ / /___/ /_/ / |/ |/ /  __/ /    
+/_____/\____/|__/|__/\___/_/     
+"""
 
-# Find account posisiton and arrange the data into a printable format
-def format_data(account):
-  """Take the account data and return it into a printable format"""
-  account_name = account["name"]
-  account_desc = account["description"]
-  account_loc = account["country"]
-  return f"{account_name} a {account_desc}, from {account_loc}."
-
-# Review whether the user is correct or not
-def check_answer(user_guess, followers_1, followers_2):
-  """Take a user's guess and the two different follower counts and return if user was correct"""
-  if followers_1 > followers_2:
-    return user_guess == "a"
-  else:
-    return user_guess == "b"
-
-# Start the program by choosing two random accounts from the data set and prevent duplicate accounts from being shown
-rand_account_1 = random.choice(data)
-rand_account_2 = random.choice(data
-if rand_account_1 = rand_account_2:
-  rand_account_2 = random.choice(data)
-
-score = 0
-
-# Make the game repeatable
-game_running = True
-while game_running is True:
-
-  print(f"Compare A: {format_data(rand_account_1)}.")
-  print(vs)
-  print(f"Against B: {format_data(rand_account_2)}.")
-
-  # Ask user for a guess
-  guess = input("Who has more followers? Type 'A' or 'B': ").lower()
-
-  # Clear the screen
-  print("\n" * 20)
-
-  # Get follower amount for each account
-  followers_1_amount = rand_account_1["follower_count"]
-  followers_2_amount = rand_account_2["follower_count"]  
-  is_correct = check_answer(guess, followers_1_amount, followers_2_amount)
-
-  # Check if user is correct; give feedback to user on guess; and keep score
-  if is_correct:
-    score += 1
-    print(f"You're right! Current score {score}")
-    # Change the position B account to be the next account at position A
-    rand_account_1 = rand_account_2
-    rand_account_2 = random.choice(data)
-  else:
-    print(f"Sorry, that's incorrect. Final score {score}.")
-    game_running = False
+vs = r"""
+ _    __    
+| |  / /____
+| | / / ___/
+| |/ (__  ) 
+|___/____(_)
+"""
 
 data = [
     {
@@ -360,3 +323,63 @@ data = [
         'country': 'United States'
     }
 ]
+
+import random
+
+
+# Find account posisiton and arrange the data into a printable format
+def format_data(account):
+  """Take the account data and return it into a printable format"""
+  account_name = account["name"]
+  account_desc = account["description"]
+  account_loc = account["country"]
+  return f"{account_name} a {account_desc}, from {account_loc}."
+
+# Review whether the user is correct or not
+def check_answer(user_guess, followers_1, followers_2):
+  """Take a user's guess and the two different follower counts and return if user was correct"""
+  if followers_1 > followers_2:
+    return user_guess == "a"
+  else:
+    return user_guess == "b"
+
+# Start the program by choosing two random accounts from the data set and prevent duplicate accounts from being shown
+rand_account_1 = random.choice(data)
+rand_account_2 = random.choice(data
+if rand_account_1 = rand_account_2:
+  rand_account_2 = random.choice(data)
+
+print(logo)
+score = 0
+
+# Make the game repeatable
+game_running = True
+while game_running is True:
+
+  print(f"Compare A: {format_data(rand_account_1)}.")
+  print(vs)
+  print(f"Against B: {format_data(rand_account_2)}.")
+
+  # Ask user for a guess
+  guess = input("Who has more followers? Type 'A' or 'B': ").lower()
+
+  # Clear the screen
+  print("\n" * 20)
+  print(logo)
+
+  # Get follower amount for each account
+  followers_1_amount = rand_account_1["follower_count"]
+  followers_2_amount = rand_account_2["follower_count"]  
+  is_correct = check_answer(guess, followers_1_amount, followers_2_amount)
+
+  # Check if user is correct; give feedback to user on guess; and keep score
+  if is_correct:
+    score += 1
+    print(f"You're right! Current score {score}")
+    # Change the position B account to be the next account at position A
+    rand_account_1 = rand_account_2
+    rand_account_2 = random.choice(data)
+  else:
+    print(f"Sorry, that's incorrect. Final score {score}.")
+    game_running = False
+
